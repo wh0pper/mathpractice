@@ -61,13 +61,19 @@ var returnPrimes = function(parameter) {
 
   //remove primes
   for (var factor = 2; factor<parameter; factor++) {
-    console.log("factor:" + factor);
     for (var j = 0; j<lessThan.length; j++) {
-      console.log("arrayval:" + lessThan[j]);
-      if ((lessThan[j]%factor)===0) {
-        lessThan.pop(j);
+      if (lessThan[j]!=factor && (lessThan[j]%factor)===0) {
+        lessThan[j]=NaN;
       }
     }
   }
+
+  //remove NaN
+  for (var k=0; k<lessThan.length; k++) {
+    if (isNaN(lessThan[k])) {
+      var resultArray = lessThan.pop(k);
+    }
+  }
+  console.log(lessThan);
   return lessThan;
 }
